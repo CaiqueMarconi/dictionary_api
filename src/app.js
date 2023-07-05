@@ -1,6 +1,7 @@
 
 const express = require('express');
 const routes =  require('./routes.js');
+const serverless = require('serverless-http');
 
 class App{
     constructor(){
@@ -14,8 +15,8 @@ class App{
     }
 
     routes(){
-        this.server.use(routes);
+        this.server.use('/.netlify/functions/api',routes);
     }
 }
 
-module.exports = new App().server;
+module.exports.handler = serverless(new App().server);
