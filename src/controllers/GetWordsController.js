@@ -17,7 +17,8 @@ class GetWordsController {
       // Agora você pode acessar os dados do arquivo JSON como um objeto
       const allWords = Object.entries(objetoJSON);
       const twenty = allWords.slice(init, final);
-      const words = Object.fromEntries(twenty);
+      const words = twenty.map(([key, value]) => ({ [value]: key }));
+      //const words = Object.fromEntries(twenty);
       return words;
     } catch (erro) {
       console.error('Erro ao ler o arquivo:', erro);
