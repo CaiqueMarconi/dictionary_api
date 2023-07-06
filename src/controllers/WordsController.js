@@ -9,7 +9,7 @@ class WordsController{
             return res.status(400).json({message: 'Erro envie os parametros offset e limit para obter um range de palavras'})
         }
         const words = await GetWordsController.readFile(offset, limit);
-        return res.json(words);
+        return res.json([words]);
     }
 }
 
